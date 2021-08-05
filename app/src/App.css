@@ -1,0 +1,199 @@
+.app-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.app-logo {
+  max-width: 250px;;
+}
+
+.films {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px 0;
+  padding: 0 20px;
+}
+
+.films > div {
+  width: 30%;
+  margin-bottom: 30px;
+}
+
+.films .details {
+  padding: 16px;
+  border: 1px solid rgb(214, 214, 214);
+}
+
+.films .details .description {
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.films .details span {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 13px;
+  color: rgb(128, 128, 128);
+}
+
+.films .details a {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #346fbf;
+  text-decoration: none;
+}
+
+.films > div:nth-child(1n + 2) {
+  margin-left: 30px;
+}
+
+.films > div:nth-child(3n + 1) {
+  margin-left: 0;
+}
+
+.films .image {
+  min-height: 250px;
+}
+
+.film-0 .image {
+  background: url('./images/0.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-1 .image {
+  background: url('./images/1.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-2 .image {
+  background: url('./images/2.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-3 .image {
+  background: url('./images/3.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-4 .image {
+  background: url('./images/4.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-5 .image {
+  background: url('./images/5.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-6 .image {
+  background: url('./images/6.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-7 .image {
+  background: url('./images/7.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-8 .image {
+  background: url('./images/8.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-9 .image {
+  background: url('./images/9.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-10 .image {
+  background: url('./images/10.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-11 .image {
+  background: url('./images/11.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-12 .image {
+  background: url('./images/12.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-13 .image {
+  background: url('./images/13.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-14 .image {
+  background: url('./images/14.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-15 .image {
+  background: url('./images/15.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-16 .image {
+  background: url('./images/16.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-17 .image {
+  background: url('./images/17.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-18 .image {
+  background: url('./images/18.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-19 .image {
+  background: url('./images/19.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.film-20 .image {
+  background: url('./images/20.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.app-footer {
+  padding: 40px 20px;
+  background: #346fbf;
+}
+
+.app-footer p {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+}
