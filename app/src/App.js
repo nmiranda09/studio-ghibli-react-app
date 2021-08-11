@@ -33,17 +33,18 @@ class App extends Component {
           <h1 className="app-title">Studio Ghibli Films</h1>
         </header>
 
-        <section class="films">
+        <section className="films">
           {
             films.map((item, i) => (
-              <div key={i} className={"film-"+ i}>
-                <div class="image"></div>
-                <div class="details">
-                  <strong class="title">{item.title}</strong>
-                  <p class="description">{item.description}</p>
+              <div key={i} className={'film-'+ i}>
+                <div className="image"></div>
+                <div className="details">
+                  <strong className="title">{item.title}</strong>
+                  <p className="description">{item.description}</p>
                   <span>Released Date: {item.release_date}</span>
                   <span>Rating Score: {item.rt_score}/100</span>
-                  <a href="" class="read-more">Read More...</a>
+
+                  <a href={`/film/${item.id}/${i}`} className="read-more">Read More...</a>
                 </div>
 
               </div>
@@ -51,7 +52,7 @@ class App extends Component {
           }
         </section>
 
-        <footer class="app-footer">
+        <footer className="app-footer">
           <p>Copyright &copy; Studio Ghibli</p>
         </footer>
       </div>

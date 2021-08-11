@@ -41,5 +41,22 @@ app.get('/films', async (req, res) => {
   }
 })
 
+app.get('/films/:id', async (req, res) => {
+  const filmId = req.params.id;
+  console.log(req.params.id);
+  try {
+    const response = await fetch(`${baseUrl}/films/${filmId}`);
+    const jsonData = await response.json();
+
+    success(req, res, {
+      status: response.status,
+      message: response.message,
+      data: jsonData,
+    });
+  } catch(err) {
+    failure(res, err);
+  }
+})
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
