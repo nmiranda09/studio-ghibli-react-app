@@ -5,6 +5,7 @@ class Film extends Component {
     super(props);
 
     this.state = {
+      showLoader: true,
       film: [],
       filmId: this.props.match.params.id,
       filmOrder: this.props.match.params.i
@@ -23,32 +24,40 @@ class Film extends Component {
 
     if (response.status !== 200) {
       throw Error(body.message)
+    } else {
+      this.state.showLoader = false;
     }
     return body;
   };
 
   render() {
-    const { film, filmOrder } = this.state;
+    const { film, filmOrder, showLoader } = this.state;
+    let showDetails;
+
+    if (showLoader) {
+      showDetails = <div className="loader-wrapper"><div className="loader"></div></div>;
+    } else {
+      showDetails =
+      <div className="details">
+        <ul className="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><span>|</span></li>
+          <li><span>{film.title}</span></li>
+        </ul>
+        <h2>{film.title} ({film.original_title})</h2>
+        <span><b>Director:</b> {film.director}</span>
+        <span><b>Producer:</b> {film.producer}</span>
+        <span><b>Released Date:</b> {film.release_date}</span>
+        <p>{film.description}</p>
+        <span><b>Rating Score:</b> {film.rt_score}/100</span>
+      </div>;
+    }
 
     return (
       <section className="film-details">
         <div className={`film-hero film-${filmOrder}`}>
           <div className="image"></div>
-
-          <div className="details">
-            <ul className="breadcrumbs">
-              <li><a href="/">Home</a></li>
-              <li><span>|</span></li>
-              <li><span>{film.title}</span></li>
-            </ul>
-            <h2>{film.title} ({film.original_title})</h2>
-            <span><b>Director:</b> {film.director}</span>
-            <span><b>Producer:</b> {film.producer}</span>
-            <span><b>Released Date:</b> {film.release_date}</span>
-            <p>{film.description}</p>
-            <span><b>Rating Score:</b> {film.rt_score}/100</span>
-          </div>
-
+          {showDetails}
         </div>
 
         <footer className="app-footer">

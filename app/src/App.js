@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
+import { gsap } from "gsap";
+import { ScrollTrigger  } from 'gsap/ScrollTrigger';
 import logo from './images/logo.png';
 import './App.css';
 
 class App extends Component {
   state = {
+    showLoader: true,
     films: []
   };
 
@@ -12,28 +15,66 @@ class App extends Component {
       .then(res => this.setState({ films: res.data }))
       .catch(err => console.log(err));
   }
-    // fetching the GET route from the Express server which matches the GET route from server.js
+
   callBackendAPI = async () => {
     const response = await fetch('/films');
     const body = await response.json();
 
     if (response.status !== 200) {
-      throw Error(body.message)
+      throw Error(body.message);
+    } else {
+      this.state.showLoader = false;
     }
     return body;
   };
 
   render() {
-    const { films } = this.state;
+    const { films, showLoader } = this.state;
 
-    return (
-      <div className="app">
+    function App() {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.config({
+        nullTargetWarn: false,
+      });
+
+      useEffect(() => {
+        const timeline = gsap.timeline();
+
+        const timelineScroll = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".app",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1
+          }
+        });
+
+        timeline.to('.app', {duration: 0, css: {visibility: 'visible'}});
+
+        timelineScroll.fromTo('.films > div', { scale: 0 }, { scale: 1, duration: 1, ease: 'back', stagger: 0.5})
+      });
+
+      return <div className="app">
         <header className="app-header">
           <img src={logo} className="app-logo" alt="logo" />
           <h1 className="app-title">Studio Ghibli Films</h1>
         </header>
 
-        <section className="films">
+        <ShowDetails />
+
+        <footer className="app-footer">
+          <p>Copyright &copy; Studio Ghibli</p>
+        </footer>
+    </div>
+    }
+
+    function ShowDetails() {
+
+      if (showLoader) {
+        return <div className="loader-wrapper"><div className="loader"></div></div>;
+      } else {
+        return <section className="films">
           {
             films.map((item, i) => (
               <div key={i} className={'film-'+ i}>
@@ -50,12 +91,12 @@ class App extends Component {
               </div>
             ))
           }
-        </section>
+        </section>;
+      }
+    }
 
-        <footer className="app-footer">
-          <p>Copyright &copy; Studio Ghibli</p>
-        </footer>
-      </div>
+    return (
+      <App />
     );
   }
 }
