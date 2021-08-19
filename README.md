@@ -1,5 +1,5 @@
 # studio-ghibli-react-app
 
-New terminal do `npm run dev`
+On the node/server folder do `npm install` and `npm run dev` to start the server
 
-Go to app `cd app` and do `npm start`
+Once the server is up and running, Go to app folder `cd app` and do `npm install` and `npm start` to start the project.
